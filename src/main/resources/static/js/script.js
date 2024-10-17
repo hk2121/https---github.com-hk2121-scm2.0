@@ -4,15 +4,15 @@ console.log("Script Loaded");
 let currentTheme = getTheme();
 
 //initial -->
-document.addEventListener("DOMContentLoaded",() =>{
-    changeTheme();
+document.addEventListener("DOMContentLoaded", () => {
+  changeTheme();
 });
 
 //TODO:
 function changeTheme() {
   // set to web Page
 
-  changePageTheme(currentTheme, currentTheme);
+  changePageTheme(currentTheme, "");
   document.querySelector("html").classList.add(currentTheme);
 
   //set the listenter to change theme button
@@ -20,9 +20,9 @@ function changeTheme() {
 
   changeThemeButton.querySelector("span").textContent =
     currentTheme == "light" ? "Dark" : "Light";
-  const oldTheme = currentTheme;
 
   changeThemeButton.addEventListener("click", (event) => {
+    let oldTheme = currentTheme;
     console.log("change Theme Button clicked");
 
     if (currentTheme === "dark") {
@@ -54,7 +54,9 @@ function changePageTheme(theme, oldTheme) {
   setTheme(currentTheme);
 
   //remove the current theme
-  document.querySelector("html").classList.remove(oldTheme);
+  if (oldTheme) {
+    document.querySelector("html").classList.remove(oldTheme);
+  }
 
   //set the current theme
   document.querySelector("html").classList.add(theme);
