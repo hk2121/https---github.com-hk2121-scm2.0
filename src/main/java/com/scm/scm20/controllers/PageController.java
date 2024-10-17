@@ -63,14 +63,16 @@ public class PageController {
     @RequestMapping(value = "/do-register", method = RequestMethod.POST)
     public String processRegister(@ModelAttribute UserForm userForm) {
         System.out.println("processing form");
-        //fetch form data
-        //user form
+        // fetch form data
+        // user form
 
-
+        System.out.println(userForm);
         // validate form data
-        // save to database 
-        //message = "registeration successfull"
-        // redirect to login page 
+        // TODO :: validate userform
+
+        // save to database
+        // message = "registeration successfull"
+        // redirect to login page
         return "redirect:/register";
     }
 }
