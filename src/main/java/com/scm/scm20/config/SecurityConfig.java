@@ -3,16 +3,11 @@ package com.scm.scm20.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.scm.scm20.services.impl.SecurityCustomUserDetailService;
@@ -63,7 +58,6 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         // configuration
-
         // urls ko config.. kiya hai ki whichone is public or private..
         httpSecurity.authorizeHttpRequests(authorize -> {
             // authorize.requestMatchers("/home","/register","/services").permitAll();
@@ -73,7 +67,13 @@ public class SecurityConfig {
 
         //form default login
         // need to change something then here we do .. related to form login
-        httpSecurity.formLogin(Customizer.withDefaults());
+        httpSecurity.formLogin(formLogin ->{
+
+            formLogin.loginPage("/login");
+        });
+
+
+
         return httpSecurity.build();
 
     }

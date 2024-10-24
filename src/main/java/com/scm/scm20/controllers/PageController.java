@@ -24,6 +24,11 @@ public class PageController {
     @Autowired
     private UserService UserService;
 
+    @GetMapping("/")
+    public String index() {
+        return "redirect:/home";
+    }
+
     @RequestMapping("/home")
     public String home(Model model) {
         System.out.println("Home Page Handler");
@@ -110,6 +115,7 @@ public class PageController {
         user.setPassword(userForm.getPassword());
         user.setAbout(userForm.getAbout());
         user.setPhoneNumber(userForm.getPhoneNumber());
+        user.setEnabled(false);
         user.setProfilePic(
                 "https://www.freepik.com/free-psd/3d-illustration-person-with-sunglasses_27470334.htm#query=default%20user&position=11&from_view=keyword&track=ais_hybrid&uuid=55a3c8c3-a549-4f63-88c6-b9a6776372f3");
 
