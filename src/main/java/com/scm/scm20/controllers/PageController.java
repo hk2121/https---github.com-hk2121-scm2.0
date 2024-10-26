@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -61,6 +62,11 @@ public class PageController {
         System.out.println("Conatct Page Loading");
         return new String("contact");
     }
+
+    // @PostMapping("/login")
+    // public String login() {
+    //     return new String("login");
+    // }
 
     @GetMapping("/login")
     public String login() {

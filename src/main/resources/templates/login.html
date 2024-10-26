@@ -28,6 +28,16 @@
               Start Managing Contacts on Cloud !!
             </p>
 
+            <div class="text-red-600 text-center my-3" th:if="${param.error}">
+              Invalid username and password.
+            </div>
+            <div
+              class="text-green-600 text-center my-3"
+              th:if="${param.logout}"
+            >
+              You have been logged out.
+            </div>
+
             <!-- this is form
             <form
               data-th-action="@{'/do-register'}"
@@ -39,7 +49,7 @@
 
             <form
               method="post"
-              data-th-action="@{'/authentication'}"
+              data-th-action="@{'/authenticate'}"
               class="mt-5"
             >
               <!-- username field  -->
